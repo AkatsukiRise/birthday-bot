@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/AkatsukiRise/birthday-bot#readme",
   "dependencies": {
+    "mongoose": "^5.10.8",
     "nodemon": "^2.0.4"
   }
 }
