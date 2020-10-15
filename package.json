@@ -1,26 +1,19 @@
 {
-    "name": "birthday-bot",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node schemaConf.js",
-        "demon": "nodemon schemaConf.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/AkatsukiRise/birthday-bot.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/AkatsukiRise/birthday-bot/issues"
-    },
-    "homepage": "https://github.com/AkatsukiRise/birthday-bot#readme",
-    "dependencies": {
-        "mongoose": "^5.10.8",
-        "nodemon": "^2.0.4",
-        "prompt-sync": "^4.2.0"
-    }
+  "name": "birthdaybot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.5"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.9",
+    "telegraf": "^3.38.0"
+  }
 }
