@@ -4,7 +4,7 @@ const controller = require('../controllers/friend')
 
 router.get('/', controller.getAll)
 router.get('/:id', controller.getById)
-router.delete('/:id', controller.remove)
+router.delete('/', controller.remove)
 router.post('/', controller.create)
 router.post('/:id', controller.update)
 

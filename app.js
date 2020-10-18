@@ -1,12 +1,12 @@
-const express = require('express')
 require('dotenv').config()
+const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+
 const authRoutes = require('./routes/auth')
 const friendRoutes = require('./routes/friend')
 
 const app = express()
-
 
 mongoose.connect(process.env.mongoURI, {
     useNewUrlParser: true,
@@ -20,7 +20,5 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/api/auth', authRoutes)
 app.use('/api/friend', friendRoutes)
-
-
 
 module.exports = app
