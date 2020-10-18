@@ -1,26 +1,15 @@
-const app = require('./app')
-const port = process.env.port || 5000
+require('dotenv').config()
+const mongoose = require('mongoose')
+const bot = require('./telegram')
 
-app.listen(5000, () => {
-    console.log(`Server has been started on ${port}`)
+const friendController = require("./controllers/friend")
+
+mongoose.connect(process.env.mongoURI, {
+    useNewUrlParser: true,
 })
-// const TelegramBot = require('node-telegram-bot-api')
-// require('dotenv').config()
+.then(() => console.log("MongoDB connected"))
+.catch(error => console.log(error))
 
-// const bot = new TelegramBot(process.env.BOT_TOKEN, {
-//     polling: true
-// })
 
-// bot.on('message', (msg) => {
-//     const chatId = msg.chat.id
-//     bot.sendMessage(chatId, 'Клавиатура', 
-//     {
-//         reply_markup: {
-//             keyboard: [
-//                 ['1', '2'],
-//                 ['1'],
-//                 ['4', '5', '6']
-//             ]
-//         }
-//     })
-// })
+
+bot.on('message', friendController.getAll)

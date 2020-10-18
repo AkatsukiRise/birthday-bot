@@ -1,70 +1,72 @@
 
 const Friend = require('../models/Friend')
 
-module.exports.getAll = async function(req, res) {
+module.exports.getAll = async function(msg) {
+    console.log(msg.from.id)
     try{
-        const friends = await Friend.find({user: +req.body.user})
-        res.status(200).json(friends)
+        const friends = await Friend.find({user: msg.from.id})
+        console.log(friends)
     }catch(e){
-        console.log(e.message)
+        console.log(e)
     }
 }
 
-module.exports.getById = async function(req, res) {  
+module.exports.getById = async function(msg) {  
     try{
+        
         const friends = await Friend.find({
-            user: +req.body.user,
+            user: msg.from.id,
             friend_id: +req.params.id
         })
-        res.status(200).json(friends[0])
+        return 
     }catch(e){
         console.log("Can't get friend")
     }
 }
 
-module.exports.remove = async function(req, res) {  
+module.exports.remove = async function(msg) {  
     try {
         const candidate = await Friend.remove({
             friend_id: +req.body.friend_id,
-            user: +req.body.user           
+            user: msg.from.id           
         })
-        res.status(200).json({
-            message: 'deleted'
-        })
+        return {
+            message: "deleted"
+        }
     } catch(e){
         console.log("Can't remove")
     }
     //Делаем сдвиг всех айдишников, хотя не принципиально.
 }
 
-module.exports.create = async function(req, res) {  
+module.exports.create = async function(msg) {  
 
     const friend = new Friend({
         friend_id: +req.body.friend_id,
         f_name: req.body.f_name,
         s_name: req.body.s_name,
         date: req.body.date,
-        user: +req.body.user,
+        user: msg.from.id,
     })
     try{
         await friend.save()
-        res.status(201).json(friend)
+        return friend
     }catch(e){
         console.log("Can't create")
     }
 }
 
-module.exports.update = async function(req, res) {
+module.exports.update = async function(msg) {
 
     try{
         const friend = await Friend.findOneAndUpdate({
-                friend_id: +req.params.id,
-                user: +req.body.user         
+                friend_id: friend_id,
+                user: msg.from.id       
             },
             {$set: req.body},       // Вот эта штука пока не работает
             {new: true}
         )
-        res.status(200).json(friend)
+        return friend
     }catch(e){
         console.log(e.message)
     }
