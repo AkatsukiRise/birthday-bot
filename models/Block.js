@@ -2,7 +2,7 @@
 const Schema = mongoose.Schema
 
 const schemaBlock = new Schema ({
-    number: {
+    id: {
         type: string,
         required: true,
         unique: true

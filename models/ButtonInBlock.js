@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const binbBlock = new Schema ({
-    number_block: {
+    id_block: {
         ref: 'Block',
         type: Schema.Types.ObjectId
     },
-    number_button: {
+    id_button: {
         ref: 'buttons',
         type: Schema.Types.ObjectId
     },

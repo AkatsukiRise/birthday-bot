@@ -3,7 +3,7 @@ const Block = require('./Block')
 const Schema = mongoose.Schema
 
 const buttonBlock = new Schema ({
-    number: {
+    id: {
         type: Number,
         unique: true
     },
